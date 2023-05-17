@@ -71,5 +71,31 @@ describe("Token contract", function () {
 			const addr2Balance = await chainGPTToken.balanceOf(addr2.address);
 			expect(addr2Balance).to.equal(50);
 		});
+
+		it('should mint',async ()=>{
+
+			const initialOwnerBalance = await chainGPTToken.balanceOf(owner.address);
+			await chainGPTToken.mint(owner.address,1000)
+			// Check balances.
+			const finalOwnerBalance = await chainGPTToken.balanceOf(owner.address);
+			expect(finalOwnerBalance).to.equal(initialOwnerBalance.add(1000));
+		})
+
+		it('should change the admin ',async ()=>{
+			
+			await chainGPTToken.setAdmin(addr1.address)
+			const adminAddress = await chainGPTToken.admin();
+			expect(adminAddress).to.equal(addr1.address);
+		})
+
+		it('should mint method call by only owner or admin',async()=>{
+			await expect( 
+				chainGPTToken.connect(addr1).mint(addr1.address,10000) 
+			).to.be.revertedWith("Ownable: caller is not the owner or admin");
+
+			await expect( 
+				chainGPTToken.connect(addr1).setAdmin(addr1.address) 
+			).to.be.revertedWith("Ownable: caller is not the owner or admin");
+		})
 	});
 });
