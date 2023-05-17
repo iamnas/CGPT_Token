@@ -1,0 +1,24 @@
+{
+  "name": "chainGPT",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "run_test": "npx hardhat test",
+    "deploy": "npx hardhat run --network ropsten scripts/1_deploy.js",
+    "ethereum_deploy": "npx hardhat run --network ethereum scripts/deploy.js",
+    "test": "nyc mocha"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^4.8.3",
+    "chai": "^4.3.7",
+    "dotenv": "^16.0.3",
+    "ethers": "^5.7.2",
+    "ganache-cli": "^6.12.2",
+    "hardhat": "^2.14.0",
+    "install": "^0.13.0",
+    "nyc": "^15.1.0",
+    "solidity-coverage": "^0.8.2"
+  }
+}
