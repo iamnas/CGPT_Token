@@ -3,8 +3,8 @@
   "scripts": {
     "compile": "npx hardhat compile",
     "run_test": "npx hardhat test",
-    "deploy": "npx hardhat run --network ropsten scripts/1_deploy.js",
-    "ethereum_deploy": "npx hardhat run --network ethereum scripts/deploy.js",
+    "deploy": "npx hardhat run --network binance_testnet scripts/ChainGPTDeploy.js",
+    "ethereum_deploy": "npx hardhat run --network ethereum scripts/ChainGPTDeploy.js",
     "test": "nyc mocha"
   },
   "dependencies": {
